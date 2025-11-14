@@ -1,0 +1,19 @@
+{
+    "dataset_version": "V1",
+    "num_features": 4,
+    "num_samples": 150,
+    "train_size": 120,
+    "test_size": 30,
+    "feature_names": [
+        "sepal length (cm)",
+        "sepal width (cm)",
+        "petal length (cm)",
+        "petal width (cm)"
+    ],
+    "num_classes": 3,
+    "class_distribution_train": {
+        "0": 40,
+        "2": 40,
+        "1": 40
+    }
+}
