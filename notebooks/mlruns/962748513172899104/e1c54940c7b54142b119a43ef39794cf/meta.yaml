@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/juanm/OneDrive/Escritorio/tp-churn/notebooks/mlruns/962748513172899104/e1c54940c7b54142b119a43ef39794cf/artifacts
+end_time: 1763094653781
+entry_point_name: ''
+experiment_id: '962748513172899104'
+lifecycle_stage: active
+run_id: e1c54940c7b54142b119a43ef39794cf
+run_name: placid-wren-262
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763094650757
+status: 3
+tags: []
+user_id: juanm

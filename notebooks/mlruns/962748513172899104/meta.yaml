@@ -1,0 +1,6 @@
+artifact_location: file:///c:/Users/juanm/OneDrive/Escritorio/tp-churn/notebooks/mlruns/962748513172899104
+creation_time: 1763093742849
+experiment_id: '962748513172899104'
+last_update_time: 1763093742849
+lifecycle_stage: active
+name: churn_experiment

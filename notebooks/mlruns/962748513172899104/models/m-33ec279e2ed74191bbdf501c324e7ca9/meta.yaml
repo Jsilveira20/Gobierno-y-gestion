@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/juanm/OneDrive/Escritorio/tp-churn/notebooks/mlruns/962748513172899104/models/m-33ec279e2ed74191bbdf501c324e7ca9/artifacts
+creation_timestamp: 1763093743098
+experiment_id: '962748513172899104'
+last_updated_timestamp: 1763093748256
+model_id: m-33ec279e2ed74191bbdf501c324e7ca9
+model_type: null
+name: model_rf
+source_run_id: 9f1d6e2c6bb342259e69e47fdccf452d
+status: 2
+status_message: null

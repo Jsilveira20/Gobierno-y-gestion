@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/juanm/OneDrive/Escritorio/tp-churn/notebooks/mlruns/962748513172899104/9f1d6e2c6bb342259e69e47fdccf452d/artifacts
+end_time: 1763093748270
+entry_point_name: ''
+experiment_id: '962748513172899104'
+lifecycle_stage: active
+run_id: 9f1d6e2c6bb342259e69e47fdccf452d
+run_name: abundant-whale-122
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763093743003
+status: 3
+tags: []
+user_id: juanm

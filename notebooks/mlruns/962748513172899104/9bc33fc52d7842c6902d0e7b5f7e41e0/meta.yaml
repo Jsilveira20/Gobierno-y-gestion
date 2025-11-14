@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/juanm/OneDrive/Escritorio/tp-churn/notebooks/mlruns/962748513172899104/9bc33fc52d7842c6902d0e7b5f7e41e0/artifacts
+end_time: 1763094194441
+entry_point_name: ''
+experiment_id: '962748513172899104'
+lifecycle_stage: active
+run_id: 9bc33fc52d7842c6902d0e7b5f7e41e0
+run_name: whimsical-goose-933
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763094191349
+status: 3
+tags: []
+user_id: juanm

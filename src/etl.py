@@ -1,28 +1,28 @@
 import pandas as pd
 import psycopg2
 import sqlalchemy as sa
+from config import USER, PASSWORD, HOST, PORT, DB
 
-# --- credenciales Aiven ---
-USER = "students"
-PASSWORD = "AVNS_X6ug7DQ9I0TvJB8KGKC"
-HOST = "pg-179f1912-festevesmunoz-0f62.b.aivencloud.com"
-PORT = 11065
-DB = "curated"
-
-# --- string de conexión (el mismo formato que cuando viste las tablas) ---
+# --- string de conexión ---
 url = f"postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}"
-
 engine = sa.create_engine(url)
 
-# --- consultas a las tablas ---
+# --- consultas ---
 df_clients = pd.read_sql("SELECT * FROM clients;", engine)
 df_orders = pd.read_sql("SELECT * FROM orders;", engine)
 df_products = pd.read_sql("SELECT * FROM products;", engine)
 
 # --- chequeo rápido ---
 print("clients:", df_clients.shape)
-print("orders :", df_orders.shape)
+print("orders:", df_orders.shape)
 print("products:", df_products.shape)
+
+# --- guardar CSV ---
+df_clients.to_csv("data/clients.csv", index=False)
+df_orders.to_csv("data/orders.csv", index=False)
+df_products.to_csv("data/products.csv", index=False)
+
+print("\n✔ CSV GENERADOS en carpeta /data\n")
 
 
 #from sqlalchemy import inspect; print(inspect(engine).get_table_names())
