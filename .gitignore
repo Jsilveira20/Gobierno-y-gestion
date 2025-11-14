@@ -1,2 +1,5 @@
-__pycache__/
+mlruns/
+notebooks/mlruns/
+**/mlruns/
 *.pyc
+__pycache__/
