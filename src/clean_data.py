@@ -1,22 +1,16 @@
 import pandas as pd
 
-# =====================================================
 # 1) Cargar datasets
-# =====================================================
 clients = pd.read_csv("data/clients.csv")
 orders  = pd.read_csv("data/orders.csv")
 products = pd.read_csv("data/products.csv")
 
-# =====================================================
 # 2) Normalizar nombres de columnas
-# =====================================================
 clients.columns  = clients.columns.str.lower().str.strip()
 orders.columns   = orders.columns.str.lower().str.strip()
 products.columns = products.columns.str.lower().str.strip()
 
-# =====================================================
 # 3) Diagnóstico inicial
-# =====================================================
 def missing_table(df, name):
     print(f"\n===== MISSING VALUES: {name} =====")
     print((df.isnull().mean() * 100).rename("missing_%"))
@@ -34,33 +28,27 @@ missing_table(clients, "CLIENTS")
 missing_table(orders, "ORDERS")
 missing_table(products, "PRODUCTS")
 
-# =====================================================
 # 4) Eliminar duplicados
-# =====================================================
 clients = clients.drop_duplicates()
 orders = orders.drop_duplicates()
 products = products.drop_duplicates()
 
-# =====================================================
+
 # 5) Procesar fechas
-# =====================================================
 orders["order_timestamp"] = pd.to_datetime(orders["order_timestamp"], errors="coerce")
 orders["order_date"]      = orders["order_timestamp"].dt.date
 orders["order_month"]     = orders["order_timestamp"].dt.month
 orders["order_year"]      = orders["order_timestamp"].dt.year
 
-# =====================================================
 # 6) Missing values
-# =====================================================
+
 for col in ["order_price", "shipping_cost"]:
     if col in orders.columns:
         orders[col] = orders[col].fillna(orders[col].mean())
 
 clients["country"] = clients["country"].fillna("Unknown")
 
-# =====================================================
 # 7) Filtrar datos por semestres (2024)
-# =====================================================
 orders_first_sem_2024 = orders[
     (orders["order_year"] == 2024) &
     (orders["order_month"].between(1, 6))
@@ -75,9 +63,7 @@ print("\n--- FILTRO POR SEMESTRES (2024) ---")
 print("Primer semestre:", orders_first_sem_2024.shape)
 print("Segundo semestre:", orders_second_sem_2024.shape)
 
-# =====================================================
 # 8) Cálculo de RFM usando primer semestre 2024
-# =====================================================
 reference_date = pd.to_datetime("2024-06-30")
 
 # --- RECENCY ---
@@ -114,9 +100,8 @@ clients[["recency", "frequency", "monetary"]] = clients[["recency", "frequency",
 print("\n===== RFM PREVIEW =====")
 print(clients[["client_id", "recency", "frequency", "monetary"]].head())
 
-# =====================================================
 # 9) CHURN (cliente que NO compró en el segundo semestre)
-# =====================================================
+
 freq_s1 = (
     orders_first_sem_2024.groupby("client_id")["order_id"]
     .count()
@@ -141,9 +126,7 @@ clients["churn"] = (clients["freq_s2"] == 0).astype(int)
 print("\nDistribución de CHURN:")
 print(clients["churn"].value_counts())
 
-# =====================================================
 # 10) Segmentación RFM (etiquetas y ranks)
-# =====================================================
 
 # --- Etiquetas por cuartiles ---
 clients["recency_segment"] = pd.qcut(
@@ -183,9 +166,7 @@ print(clients[
      "RFM_score", "churn_risk_segment"]
 ].head())
 
-# =====================================================
 # 11) Exportar datos finales
-# =====================================================
 clients.to_csv("data/clients_clean.csv", index=False)
 orders.to_csv("data/orders_clean.csv", index=False)
 products.to_csv("data/products_clean.csv", index=False)
